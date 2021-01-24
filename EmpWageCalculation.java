@@ -1,40 +1,43 @@
 public class EmpWageCalculation {
+    public static final int IS_FULL_TIME = 1;
+    public static final int IS_PART_TIME = 2;
 
-	public static final int IS_PART_TIME = 1;
-	public static final int IS_FULL_TIME = 2;
-	public static final int EMP_RATE_PER_HOUR = 20;
-	public static final int NUM_OF_WORKING_DAYS = 2;
-	public static final int MAX_HRS_IN_MONTH = 10;
+    public static final int EMP_RATE_PER_HR = 20;
+    public static final int NUM_OF_WORKING_DAYS = 20;
+    public static final int MAX_HRS_IN_MONTH = 100;
 
-	public static void computeEmployeeWage() {
-		// variables
-		int empHrs = 0, totalWorkingDays = 0, totalEmpHrs = 0;
-		// computation
-		while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
-			totalWorkingDays++;
-			int employeeCheck = (int)Math.floor(Math.random() * 10) % 3;
-			// Check whether Employee is working as a full time or part time or not working.
-			switch (employeeCheck) {
-			case IS_PART_TIME:
-				empHrs = 4;
-				break;
-			case IS_FULL_TIME:
-				empHrs = 8;
-				break;
-			default:
-				empHrs = 0;
-			}
-			totalEmpHrs += empHrs;
-			System.out.println("Day: "+totalWorkingDays);
-			System.out.println(" Emp Hr: "+empHrs);
-		}
-		int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-		// Total Employee Wage for the hours Employee has worked
-		System.out.println("Total Emp Wage: " + totalEmpWage);
-	}
+    static void totalEmpWage(int ratePerHr, int numOfDays, int hrsInMonth) {
+        //VARIABLES
+        int empHrs = 0;
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
 
-	public static void main(String[] args){
-		System.out.println("Welcome to the Employee Wage Computation Problem");
-		computeEmployeeWage();
-	}
+        //COMPUTATION
+        while (totalEmpHrs <= hrsInMonth && totalWorkingDays < numOfDays) {
+            totalWorkingDays++;
+            int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+            switch (empCheck) {
+                case IS_FULL_TIME:
+                    empHrs = 8;
+                    break;
+                case IS_PART_TIME:
+                    empHrs = 4;
+                    break;
+                default:
+                    empHrs = 0;
+                    break;
+            }
+            totalEmpHrs += empHrs;
+            System.out.println("Days: " + totalWorkingDays + " Emp Hours: " + empHrs);
+        }
+        int totalWage = totalEmpHrs * ratePerHr;
+        System.out.println("Total Emp Wage for company company is " + totalWage);
+    }
+
+    public static void main(String args[]) {
+    	//Multiple Companies data
+		  System.out.println("Welcome to Employee Wage Computation Problem.\n");
+        totalEmpWage(20,20,100);
+        totalEmpWage(15, 25, 120);
+    }
 }
