@@ -1,4 +1,4 @@
-//*CompanyEmpWage*/
+//*CompanyEmpWage*//
 class CompanyEmpWage {
 
 		final String company;
